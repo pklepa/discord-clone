@@ -1,15 +1,24 @@
 import React from "react";
 
-import { Container, Title, ExpandIcon } from "./styles";
+import { Container, Category, AddCategoryIcon } from "./styles";
+import ChannelButton from "../ChannelButton";
 
-function ServerName() {
+function ChannelList() {
   return (
     <Container>
-      <Title>Servidor do Kepla</Title>
+      <Category>
+        <span>Text Channels</span>
 
-      <ExpandIcon />
+        <AddCategoryIcon />
+      </Category>
+
+      <ChannelButton channelName="general" />
+      <ChannelButton channelName="work wrok rwok" />
+      <ChannelButton channelName="liga das lendas" />
+      <ChannelButton channelName="valente" />
+      <ChannelButton channelName="fall bois" />
     </Container>
   );
 }
 
-export default ServerName;
+export default ChannelList;
