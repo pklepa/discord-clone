@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import GlobalStyles from './styles/GlobalStyles'
+import GlobalStyles from "./styles/GlobalStyles";
+import Layout from "./components/Layout";
 
 function App() {
   return (
     <>
       <GlobalStyles />
 
-      <h1>Bom dia jesus</h1>
+      <Layout />
     </>
-
   );
 }
 
