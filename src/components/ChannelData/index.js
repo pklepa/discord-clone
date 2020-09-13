@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
 import ChannelMessage, { Mention } from "../ChannelMessage";
 
 import { Container, Messages, InputWrapper, Input, InputIcon } from "./styles";
 
 function ChannelData() {
+  // This ref and effect will cause the Messages div to scroll to bottom each time a new message is posted or when its first loaded
+  const messagesRef = useRef();
+  useEffect(() => {
+    const div = messagesRef.current;
+
+    if (div) {
+      div.scrollTop = div.scrollHeight;
+    }
+  }, [messagesRef]);
+
   return (
     <Container>
-      <Messages>
+      <Messages ref={messagesRef}>
         <ChannelMessage
           author="Guilherme Rolamento"
           date="13/09/2020"
