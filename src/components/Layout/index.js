@@ -6,6 +6,7 @@ import ServerName from "../ServerName";
 import ChannelInfo from "../ChannelInfo";
 import ChannelList from "../ChannelList";
 import UserInfo from "../UserInfo";
+import UserList from "../UserList";
 
 function Layout() {
   return (
@@ -15,6 +16,7 @@ function Layout() {
       <ChannelInfo />
       <ChannelList />
       <UserInfo />
+      <UserList />
     </Grid>
   );
 }
