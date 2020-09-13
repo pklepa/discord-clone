@@ -2,15 +2,17 @@ import React from "react";
 
 import { Container, HashtagIcon, InviteIcon, SettingsIcon } from "./styles";
 
-function ChannelButton() {
+function ChannelButton(props) {
+  const { selected, channelName } = props;
+
   return (
-    <Container>
+    <Container className={selected ? "active" : ""}>
       <div>
         <HashtagIcon />
-        <span>general</span>
+        <span>{channelName}</span>
       </div>
 
-      <div>
+      <div className="channel-options">
         <InviteIcon />
         <SettingsIcon />
       </div>

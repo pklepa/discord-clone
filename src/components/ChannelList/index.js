@@ -12,7 +12,7 @@ function ChannelList() {
         <AddCategoryIcon />
       </Category>
 
-      <ChannelButton channelName="general" />
+      <ChannelButton selected channelName="general" />
       <ChannelButton channelName="work wrok rwok" />
       <ChannelButton channelName="liga das lendas" />
       <ChannelButton channelName="valente" />

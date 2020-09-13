@@ -1,10 +1,11 @@
 import React from "react";
 
-import { Grid, Title } from "./styles";
+import { Grid } from "./styles";
 import ServerList from "../ServerList";
 import ServerName from "../ServerName";
 import ChannelInfo from "../ChannelInfo";
 import ChannelList from "../ChannelList";
+import UserInfo from "../UserInfo";
 
 function Layout() {
   return (
@@ -13,6 +14,7 @@ function Layout() {
       <ServerName />
       <ChannelInfo />
       <ChannelList />
+      <UserInfo />
     </Grid>
   );
 }
