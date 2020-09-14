@@ -1,6 +1,7 @@
 import React from "react";
 
 import firebase from "../../firebase";
+import Logo from "../../assets/images/discord.svg";
 
 import {
   Container,
@@ -14,14 +15,25 @@ import {
 } from "./styles";
 
 function UserInfo() {
-  // console.log(firebase.auth().currentUser);
-  // const username = firebase.auth().currentUser.displayName || "Anonymous";
-  const username = firebase.auth().currentUser.displayName || "Anonymous";
+  const username = firebase.auth().currentUser.displayName;
+  const profilePic =
+    firebase.auth().currentUser.photoURL || "../../assets/images/discord.svg";
+
+  // Adds a size to Google Profile pics URLs.
+  function addSizeToGoogleProfilePic(url) {
+    if (
+      url.indexOf("googleusercontent.com") !== -1 &&
+      url.indexOf("?") === -1
+    ) {
+      return url + "?sz=32";
+    }
+    return url;
+  }
 
   return (
     <Container>
       <Profile>
-        <Avatar />
+        <Avatar googleProfilePic={addSizeToGoogleProfilePic(profilePic)} />
         <UserData>
           <strong>{username}</strong>
           <span>#1728</span>
