@@ -1,6 +1,6 @@
 import React from "react";
 
-import Logo from "../../assets/discord.svg";
+import Logo from "../../assets/images/discord.svg";
 import { Button } from "./styles";
 
 function ServerButton(props) {
