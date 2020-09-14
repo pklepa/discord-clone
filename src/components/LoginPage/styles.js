@@ -12,6 +12,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &.hidden {
+    display: none;
+  }
 `;
 
 export const Form = styled.div`
