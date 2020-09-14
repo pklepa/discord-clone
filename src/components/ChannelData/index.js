@@ -63,7 +63,7 @@ function ChannelData() {
     if (div) {
       div.scrollTop = div.scrollHeight;
     }
-  }, [messagesRef]);
+  }, [messages]);
 
   return (
     <Container>
@@ -94,7 +94,6 @@ function ChannelData() {
         />
 
         {messages.map((msg) => {
-          console.log(msg);
           return (
             <ChannelMessage
               key={msg.id}
