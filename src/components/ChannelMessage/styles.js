@@ -26,6 +26,8 @@ export const Avatar = styled.div`
   height: 40px;
 
   background-color: var(--secondary);
+  background-image: url(${(props) => props.avatarUrl});
+  background-size: cover;
   border-radius: 50%;
 
   &.bot {

@@ -4,10 +4,10 @@ import { Container, Avatar, Message, Header, Content } from "./styles";
 export { Mention } from "./styles";
 
 function ChannelMessage(props) {
-  const { author, date, content, hasMention, isBot } = props;
+  const { author, date, content, avatarUrl, hasMention, isBot } = props;
   return (
     <Container className={hasMention ? "mention" : ""}>
-      <Avatar className={isBot ? "bot" : ""} />
+      <Avatar className={isBot ? "bot" : ""} avatarUrl={avatarUrl} />
 
       <Message>
         <Header>
