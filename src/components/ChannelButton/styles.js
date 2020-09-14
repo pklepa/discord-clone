@@ -46,15 +46,15 @@ export const Container = styled.div`
 `;
 
 export const HashtagIcon = styled(Hashtag)`
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 
   color: var(--symbol);
 `;
 
 export const InviteIcon = styled(PersonAdd)`
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 
   color: var(--symbol);
   cursor: pointer;
@@ -67,8 +67,8 @@ export const InviteIcon = styled(PersonAdd)`
 `;
 
 export const SettingsIcon = styled(Settings)`
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 
   margin-left: 4px;
 

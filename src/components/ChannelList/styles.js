@@ -32,5 +32,10 @@ export const AddCategoryIcon = styled(Add)`
   height: 21px;
 
   color: var(--symbol);
+  transition: color 200ms;
   cursor: pointer;
+
+  &:hover {
+    color: var(--white);
+  }
 `;
