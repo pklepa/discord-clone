@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import firebase from "../../firebase";
 
 import { Container, Form, Header, LoginButton } from "./styles";
 
-function LoginPage() {
-  const [isUserSignedIn, setIsUserSignedIn] = useState(
-    firebase.auth().currentUser ? true : false
-  );
+function LoginPage(props) {
+  const { setIsUserSignedIn } = props;
 
   function signIn() {
     // Sign into Firebase using popup auth & Google as the identity provider.
@@ -15,20 +13,19 @@ function LoginPage() {
     firebase.auth().signInWithPopup(provider);
   }
 
-  function authStateObserver(user) {
-    // If user successfully logged-in
-    if (user) {
-      setIsUserSignedIn(true);
-    }
-  }
-
   useEffect(() => {
     // Listen to auth state changes.
-    firebase.auth().onAuthStateChanged(authStateObserver);
+    firebase.auth().onAuthStateChanged((user) => {
+      // If user successfully logged-in
+      if (user) {
+        setTimeout(() => setIsUserSignedIn(true), 1000);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Container className={isUserSignedIn ? "hidden" : ""}>
+    <Container>
       <Form>
         <Header>
           <h1>Welcome back!</h1>
