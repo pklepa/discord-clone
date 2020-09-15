@@ -10,20 +10,28 @@ import UserList from "../UserList";
 import ChannelData from "../ChannelData";
 
 function Layout() {
+  const [currentServer, setCurrentServer] = useState("SRV00");
   const [currentChannel, setCurrentChannel] = useState("CH00");
 
   return (
     <Grid>
-      <ServerList />
+      <ServerList
+        currentServer={currentServer}
+        setCurrentServer={setCurrentServer}
+      />
       <ServerName />
       <ChannelInfo />
       <ChannelList
+        currentServer={currentServer}
         currentChannel={currentChannel}
         setCurrentChannel={setCurrentChannel}
       />
       <UserInfo />
 
-      <ChannelData currentChannel={currentChannel} />
+      <ChannelData
+        currentServer={currentServer}
+        currentChannel={currentChannel}
+      />
       <UserList />
     </Grid>
   );

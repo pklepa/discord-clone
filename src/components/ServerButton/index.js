@@ -10,6 +10,7 @@ function ServerButton(props) {
     hasNotifications,
     mentions,
     isAddServerBtn,
+    onClick,
   } = props;
 
   return (
@@ -20,6 +21,7 @@ function ServerButton(props) {
       isHome={isHome}
       hasNotifications={hasNotifications}
       mentions={mentions}
+      onClick={onClick}
     >
       {isHome && (
         <img

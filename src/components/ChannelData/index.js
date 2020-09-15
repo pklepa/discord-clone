@@ -6,14 +6,14 @@ import ChannelMessage, { Mention } from "../ChannelMessage";
 
 import { Container, Messages, InputWrapper, Input, InputIcon } from "./styles";
 
-function FetchChannelMessages(channel) {
+function FetchChannelMessages(server, channel) {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     const unsubscribe = firebase
       .firestore()
       .collection("servers")
-      .doc("SRV00")
+      .doc(server)
       .collection("channels")
       .doc(channel)
       .collection("messages")
@@ -28,14 +28,14 @@ function FetchChannelMessages(channel) {
       });
 
     return () => unsubscribe();
-  }, [channel]);
+  }, [channel, server]);
 
   return messages;
 }
 
 function ChannelData(props) {
-  const { currentChannel } = props;
-  const messages = FetchChannelMessages(currentChannel);
+  const { currentServer, currentChannel } = props;
+  const messages = FetchChannelMessages(currentServer, currentChannel);
 
   const currentUser = {
     author: firebase.auth().currentUser.displayName,

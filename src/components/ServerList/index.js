@@ -27,16 +27,22 @@ function FetchServers() {
   return servers;
 }
 
-function ServerList() {
+function ServerList(props) {
+  const { currentServer, setCurrentServer } = props;
   const servers = FetchServers();
-  const [currentServer, setCurrentServer] = useState("SRV00");
 
   return (
     <Container>
       <ServerButton isHome />
       <Separator />
       {servers.map((server) => {
-        return <ServerButton selected hasNotifications />;
+        return (
+          <ServerButton
+            selected={currentServer === server.id}
+            onClick={() => setCurrentServer(server.id)}
+            hasNotifications
+          />
+        );
       })}
       <ServerButton isAddServerBtn />
     </Container>

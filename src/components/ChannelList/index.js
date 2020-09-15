@@ -5,14 +5,14 @@ import firebase from "../../firebase";
 import { Container, Category, AddCategoryIcon } from "./styles";
 import ChannelButton from "../ChannelButton";
 
-function FetchServerChannels() {
+function FetchServerChannels(server) {
   const [channels, setChannels] = useState([]);
 
   useEffect(() => {
     const unsubscribe = firebase
       .firestore()
       .collection("servers")
-      .doc("SRV00")
+      .doc(server)
       .collection("channels")
       .orderBy("name", "asc")
       .onSnapshot((snapshot) => {
@@ -25,14 +25,14 @@ function FetchServerChannels() {
       });
 
     return () => unsubscribe();
-  }, []);
+  }, [server]);
 
   return channels;
 }
 
 function ChannelList(props) {
-  const channels = FetchServerChannels();
-  const { currentChannel, setCurrentChannel } = props;
+  const { currentServer, currentChannel, setCurrentChannel } = props;
+  const channels = FetchServerChannels(currentServer);
 
   return (
     <Container>
