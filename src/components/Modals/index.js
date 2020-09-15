@@ -11,6 +11,9 @@ import {
   Button,
 } from "./styles";
 
+// TODO: Extract the form to a different "AddChannel" component
+// TODO: Validate the input as [a-z]-_
+
 function Modals() {
   return (
     <Container>
