@@ -38,6 +38,7 @@ function ServerList(props) {
       {servers.map((server) => {
         return (
           <ServerButton
+            key={server.id}
             selected={currentServer === server.id}
             onClick={() => setCurrentServer(server.id)}
             hasNotifications

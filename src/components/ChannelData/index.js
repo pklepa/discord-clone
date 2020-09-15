@@ -50,9 +50,9 @@ function ChannelData(props) {
     return firebase
       .firestore()
       .collection("servers")
-      .doc("SRV00")
+      .doc(currentServer)
       .collection("channels")
-      .doc("CH01")
+      .doc(currentChannel)
       .collection("messages")
       .add({
         author: currentUser.author,

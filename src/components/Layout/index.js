@@ -17,7 +17,10 @@ function Layout() {
     <Grid>
       <ServerList
         currentServer={currentServer}
-        setCurrentServer={setCurrentServer}
+        setCurrentServer={(server) => {
+          setCurrentServer(server);
+          setCurrentChannel("CH00");
+        }}
       />
       <ServerName />
       <ChannelInfo />

@@ -45,6 +45,7 @@ function ChannelList(props) {
       {channels.map((channel) => {
         return (
           <ChannelButton
+            key={channel.id}
             selected={currentChannel === channel.id}
             channelName={channel.name}
             onClick={() => setCurrentChannel(channel.id)}
