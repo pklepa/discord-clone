@@ -8,15 +8,15 @@ import {
   Description,
 } from "./styles";
 
-function ChannelInfo() {
+function ChannelInfo({ currentChannel }) {
   return (
     <Container>
       <HashtagIcon />
-      <Title>general</Title>
+      <Title>{currentChannel.name}</Title>
 
       <Separator />
 
-      <Description>something here</Description>
+      <Description>{currentChannel.description}</Description>
     </Container>
   );
 }

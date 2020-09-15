@@ -112,7 +112,7 @@ function ChannelData(props) {
       <InputWrapper>
         <Input
           type="text"
-          placeholder="Conversar em #general"
+          placeholder={`Conversar em #${currentChannel.name}`}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyPress={(e) => {

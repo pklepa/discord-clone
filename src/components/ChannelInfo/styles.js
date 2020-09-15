@@ -40,6 +40,6 @@ export const Separator = styled.div`
 `;
 
 export const Description = styled.span`
-  font-size: 15px;
+  font-size: 16px;
   color: var(--gray);
 `;

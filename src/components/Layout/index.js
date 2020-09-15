@@ -17,6 +17,7 @@ function Layout() {
   const [currentChannel, setCurrentChannel] = useState({
     id: "CH00",
     name: "welcome",
+    description: "Say hello!",
   });
 
   return (
@@ -28,11 +29,12 @@ function Layout() {
           setCurrentChannel({
             id: "CH00",
             name: "welcome",
+            description: "Say hello!",
           });
         }}
       />
       <ServerName currentServer={currentServer} />
-      <ChannelInfo />
+      <ChannelInfo currentChannel={currentChannel} />
       <ChannelList
         currentServer={currentServer}
         currentChannel={currentChannel}
