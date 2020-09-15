@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Add } from "styled-icons/material";
 
 export const Button = styled.button`
   display: flex;
@@ -25,6 +26,14 @@ export const Button = styled.button`
   :active {
     background-color: var(--discord);
     border-radius: 15px;
+
+    &.addServer {
+      background-color: var(--discord-add-btn);
+    }
+
+    > svg {
+      color: var(--white);
+    }
   }
 
   &::before {
@@ -80,4 +89,12 @@ export const Button = styled.button`
     max-width: 30px;
     max-height: 30px;
   }
+`;
+
+export const AddIcon = styled(Add)`
+  width: 25px;
+  height: 25px;
+
+  color: var(--discord-add-btn);
+  transition: color 200ms;
 `;
