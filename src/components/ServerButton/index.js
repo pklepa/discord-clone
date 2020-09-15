@@ -8,7 +8,7 @@ function ServerButton(props) {
 
   return (
     <Button
-      selected={selected}
+      className={selected ? "selected" : ""}
       isHome={isHome}
       hasNotifications={hasNotifications}
       mentions={mentions}

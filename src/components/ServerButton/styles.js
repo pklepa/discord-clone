@@ -20,6 +20,7 @@ export const Button = styled.button`
 
   transition: border-radius 200ms, background-color 200ms;
 
+  &.selected,
   :hover,
   :active {
     background-color: var(--discord);
