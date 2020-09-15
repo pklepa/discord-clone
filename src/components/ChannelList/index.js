@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import firebase from "../../firebase";
 
 import { Container, Category, AddCategoryIcon } from "./styles";
 import ChannelButton from "../ChannelButton";
 
-function ChannelList() {
+function FetchServerChannels() {
+  const [channels, setChannels] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = firebase
+      .firestore()
+      .collection("servers")
+      .doc("SRV00")
+      .collection("channels")
+      .orderBy("name", "asc")
+      .onSnapshot((snapshot) => {
+        const newChannels = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setChannels(newChannels);
+      });
+
+    return () => unsubscribe();
+  }, []);
+
+  return channels;
+}
+
+function ChannelList(props) {
+  const channels = FetchServerChannels();
+  const { currentChannel, setCurrentChannel } = props;
+
   return (
     <Container>
       <Category>
@@ -12,11 +42,15 @@ function ChannelList() {
         <AddCategoryIcon />
       </Category>
 
-      <ChannelButton selected channelName="general" />
-      <ChannelButton channelName="work wrok rwok" />
-      <ChannelButton channelName="liga das lendas" />
-      <ChannelButton channelName="valente" />
-      <ChannelButton channelName="fall bois" />
+      {channels.map((channel) => {
+        return (
+          <ChannelButton
+            selected={currentChannel === channel.id}
+            channelName={channel.name}
+            onClick={() => setCurrentChannel(channel.id)}
+          />
+        );
+      })}
     </Container>
   );
 }

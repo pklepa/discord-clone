@@ -6,7 +6,7 @@ import ChannelMessage, { Mention } from "../ChannelMessage";
 
 import { Container, Messages, InputWrapper, Input, InputIcon } from "./styles";
 
-function FetchChannelMessages() {
+function FetchChannelMessages(channel) {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function FetchChannelMessages() {
       .collection("servers")
       .doc("SRV00")
       .collection("channels")
-      .doc("CH01")
+      .doc(channel)
       .collection("messages")
       .orderBy("timestamp", "asc")
       .onSnapshot((snapshot) => {
@@ -28,13 +28,14 @@ function FetchChannelMessages() {
       });
 
     return () => unsubscribe();
-  }, []);
+  }, [channel]);
 
   return messages;
 }
 
-function ChannelData() {
-  const messages = FetchChannelMessages();
+function ChannelData(props) {
+  const { currentChannel } = props;
+  const messages = FetchChannelMessages(currentChannel);
 
   const currentUser = {
     author: firebase.auth().currentUser.displayName,

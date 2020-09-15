@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Grid } from "./styles";
 import ServerList from "../ServerList";
@@ -10,15 +10,20 @@ import UserList from "../UserList";
 import ChannelData from "../ChannelData";
 
 function Layout() {
+  const [currentChannel, setCurrentChannel] = useState("CH00");
+
   return (
     <Grid>
       <ServerList />
       <ServerName />
       <ChannelInfo />
-      <ChannelList />
+      <ChannelList
+        currentChannel={currentChannel}
+        setCurrentChannel={setCurrentChannel}
+      />
       <UserInfo />
 
-      <ChannelData />
+      <ChannelData currentChannel={currentChannel} />
       <UserList />
     </Grid>
   );
