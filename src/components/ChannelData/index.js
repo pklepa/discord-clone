@@ -12,6 +12,10 @@ function FetchChannelMessages() {
   useEffect(() => {
     const unsubscribe = firebase
       .firestore()
+      .collection("servers")
+      .doc("SRV00")
+      .collection("channels")
+      .doc("CH01")
       .collection("messages")
       .orderBy("timestamp", "asc")
       .onSnapshot((snapshot) => {
@@ -44,6 +48,10 @@ function ChannelData() {
     // Add a new message entry to the database.
     return firebase
       .firestore()
+      .collection("servers")
+      .doc("SRV00")
+      .collection("channels")
+      .doc("CH01")
       .collection("messages")
       .add({
         author: currentUser.author,
@@ -71,12 +79,6 @@ function ChannelData() {
     <Container>
       <Messages ref={messagesRef}>
         <ChannelMessage
-          author="Guilherme Rolamento"
-          date="13/09/2020"
-          content="I'm moving abroad in 2 months."
-        />
-
-        <ChannelMessage
           author="Robocop"
           date="13/09/2020"
           content={
@@ -85,13 +87,6 @@ function ChannelData() {
             </>
           }
           hasMention
-          isBot
-        />
-
-        <ChannelMessage
-          author="Spammer"
-          date="13/09/2020"
-          content="SPAN SPAN."
           isBot
         />
 
