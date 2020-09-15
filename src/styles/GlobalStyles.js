@@ -33,6 +33,7 @@ html, body, #root {
 
   --notification: #f84a4b;
   --discord: #6e86d6;
+  --discord-dark: #5a6aa1;
   --discord-add-btn: #5ed682;
   --mention-detail: #f9a839;
   --mention-message: #413f3f;

@@ -57,7 +57,12 @@ export const LoginButton = styled.button`
   font-weight: 400;
 
   background-color: var(--discord);
-  border-radius: 5px;
+  transition: background-color 200ms;
+  border-radius: 6px;
 
   cursor: pointer;
+
+  &:hover {
+    background-color: var(--discord-dark);
+  }
 `;
