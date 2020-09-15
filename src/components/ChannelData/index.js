@@ -13,9 +13,9 @@ function FetchChannelMessages(server, channel) {
     const unsubscribe = firebase
       .firestore()
       .collection("servers")
-      .doc(server)
+      .doc(server.id)
       .collection("channels")
-      .doc(channel)
+      .doc(channel.id)
       .collection("messages")
       .orderBy("timestamp", "asc")
       .onSnapshot((snapshot) => {
@@ -50,9 +50,9 @@ function ChannelData(props) {
     return firebase
       .firestore()
       .collection("servers")
-      .doc(currentServer)
+      .doc(currentServer.id)
       .collection("channels")
-      .doc(currentChannel)
+      .doc(currentChannel.id)
       .collection("messages")
       .add({
         author: currentUser.author,

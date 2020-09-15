@@ -39,8 +39,8 @@ function ServerList(props) {
         return (
           <ServerButton
             key={server.id}
-            selected={currentServer === server.id}
-            onClick={() => setCurrentServer(server.id)}
+            selected={currentServer.id === server.id}
+            onClick={() => setCurrentServer(server)}
             hasNotifications
           />
         );

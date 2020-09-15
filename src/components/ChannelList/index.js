@@ -12,7 +12,7 @@ function FetchServerChannels(server) {
     const unsubscribe = firebase
       .firestore()
       .collection("servers")
-      .doc(server)
+      .doc(server.id)
       .collection("channels")
       .orderBy("name", "asc")
       .onSnapshot((snapshot) => {
@@ -46,9 +46,9 @@ function ChannelList(props) {
         return (
           <ChannelButton
             key={channel.id}
-            selected={currentChannel === channel.id}
+            selected={currentChannel.id === channel.id}
             channelName={channel.name}
-            onClick={() => setCurrentChannel(channel.id)}
+            onClick={() => setCurrentChannel(channel)}
           />
         );
       })}

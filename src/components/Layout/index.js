@@ -10,8 +10,14 @@ import UserList from "../UserList";
 import ChannelData from "../ChannelData";
 
 function Layout() {
-  const [currentServer, setCurrentServer] = useState("SRV00");
-  const [currentChannel, setCurrentChannel] = useState("CH00");
+  const [currentServer, setCurrentServer] = useState({
+    name: "Discount Discord",
+    id: "SRV00",
+  });
+  const [currentChannel, setCurrentChannel] = useState({
+    id: "CH00",
+    name: "welcome",
+  });
 
   return (
     <Grid>
@@ -19,10 +25,13 @@ function Layout() {
         currentServer={currentServer}
         setCurrentServer={(server) => {
           setCurrentServer(server);
-          setCurrentChannel("CH00");
+          setCurrentChannel({
+            id: "CH00",
+            name: "welcome",
+          });
         }}
       />
-      <ServerName />
+      <ServerName currentServer={currentServer} />
       <ChannelInfo />
       <ChannelList
         currentServer={currentServer}

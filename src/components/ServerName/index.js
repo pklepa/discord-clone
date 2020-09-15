@@ -2,10 +2,10 @@ import React from "react";
 
 import { Container, Title, ExpandIcon } from "./styles";
 
-function ServerName() {
+function ServerName({ currentServer }) {
   return (
     <Container>
-      <Title>Servidor do Kepla</Title>
+      <Title>{currentServer.name}</Title>
 
       <ExpandIcon />
     </Container>
