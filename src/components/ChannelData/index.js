@@ -10,7 +10,7 @@ function FetchChannelMessages() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    firebase
+    const unsubscribe = firebase
       .firestore()
       .collection("messages")
       .orderBy("timestamp", "asc")
@@ -22,6 +22,8 @@ function FetchChannelMessages() {
 
         setMessages(newMessages);
       });
+
+    return () => unsubscribe();
   }, []);
 
   return messages;
