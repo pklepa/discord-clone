@@ -23,7 +23,6 @@ export const Avatar = styled.div`
   height: 32px;
   border-radius: 50%;
 
-  /* background-color: var(--gray); */
   background-image: url(${(props) => props.googleProfilePic});
   background-size: cover;
   background-repeat: no-repeat;

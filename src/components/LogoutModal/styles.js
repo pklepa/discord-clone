@@ -72,7 +72,6 @@ export const Avatar = styled.div`
   height: 44px;
   border-radius: 50%;
 
-  /* background-color: var(--gray); */
   background-image: url(${(props) => props.googleProfilePic});
   background-size: cover;
   background-repeat: no-repeat;
@@ -96,23 +95,6 @@ export const UserDetails = styled.div`
     font-size: 14px;
 
     margin-top: 6px;
-  }
-`;
-
-export const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 16px;
-
-  color: var(--white);
-  font-size: 15px;
-
-  background-color: var(--secondary);
-  border: 1px solid transparent;
-  border-radius: 6px;
-
-  &:focus {
-    border: 1px solid var(--discord);
   }
 `;
 
