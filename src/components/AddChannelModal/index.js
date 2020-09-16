@@ -47,7 +47,12 @@ function AddChannelModal({ isVisible, setIsVisible }) {
                 type="text"
                 maxLength="20"
                 value={channelName}
-                onChange={(e) => setChannelName(e.target.value)}
+                onChange={(e) => {
+                  const pattern = /[\w-]/;
+                  const str = e.target.value.toLowerCase();
+
+                  if (pattern.test(str[str.length - 1])) setChannelName(str);
+                }}
               />
             </InputWrapper>
 
@@ -57,7 +62,13 @@ function AddChannelModal({ isVisible, setIsVisible }) {
                 type="text"
                 maxLength="80"
                 value={channelDescription}
-                onChange={(e) => setChannelDescription(e.target.value)}
+                onChange={(e) => {
+                  const pattern = /[\w-]/;
+                  const str = e.target.value;
+
+                  if (pattern.test(str[str.length - 1]))
+                    setChannelDescription(str);
+                }}
               />
             </InputWrapper>
 
