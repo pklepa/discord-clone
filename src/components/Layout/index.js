@@ -57,7 +57,11 @@ function Layout() {
 
       <UserList />
 
-      <AddChannelModal isVisible={showModals} setIsVisible={setShowModals} />
+      <AddChannelModal
+        currentServer={currentServer}
+        isVisible={showModals}
+        setIsVisible={setShowModals}
+      />
     </Grid>
   );
 }

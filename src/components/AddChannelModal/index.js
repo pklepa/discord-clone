@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import firebase from "../../firebase";
 import { AnimatePresence } from "framer-motion";
 import {
   Container,
@@ -12,9 +13,27 @@ import {
   Button,
 } from "./styles";
 
-function AddChannelModal({ isVisible, setIsVisible }) {
+function AddChannelModal({ currentServer, isVisible, setIsVisible }) {
   const [channelName, setChannelName] = useState("");
   const [channelDescription, setChannelDescription] = useState("");
+
+  // Saves a new channel to Cloud Firestore database.
+  function addChannelToFirebase() {
+    firebase
+      .firestore()
+      .collection("servers")
+      .doc(currentServer.id)
+      .collection("channels")
+      .add({
+        name: channelName,
+        description: channelDescription,
+      })
+      .catch(function (error) {
+        console.error("Error adding new channel to database", error);
+      });
+
+    closeModal();
+  }
 
   function closeModal() {
     setIsVisible(false);
@@ -63,11 +82,7 @@ function AddChannelModal({ isVisible, setIsVisible }) {
                 maxLength="80"
                 value={channelDescription}
                 onChange={(e) => {
-                  const pattern = /[\w-]/;
-                  const str = e.target.value;
-
-                  if (pattern.test(str[str.length - 1]))
-                    setChannelDescription(str);
+                  setChannelDescription(e.target.value);
                 }}
               />
             </InputWrapper>
@@ -76,7 +91,7 @@ function AddChannelModal({ isVisible, setIsVisible }) {
               <Button onClick={closeModal} isCancel>
                 Cancel
               </Button>
-              <Button>Create channel</Button>
+              <Button onClick={addChannelToFirebase}>Create channel</Button>
             </Footer>
           </Form>
         </Container>
