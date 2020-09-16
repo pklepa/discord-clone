@@ -8,7 +8,7 @@ import ChannelList from "../ChannelList";
 import UserInfo from "../UserInfo";
 import UserList from "../UserList";
 import ChannelData from "../ChannelData";
-import Modals from "../Modals";
+import AddChannelModal from "../AddChannelModal";
 
 function Layout() {
   const [currentServer, setCurrentServer] = useState({
@@ -21,7 +21,7 @@ function Layout() {
     description: "Say hello!",
   });
 
-  const [showModals, setShowModals] = useState(true);
+  const [showModals, setShowModals] = useState(false);
 
   return (
     <Grid>
@@ -45,6 +45,7 @@ function Layout() {
         currentServer={currentServer}
         currentChannel={currentChannel}
         setCurrentChannel={setCurrentChannel}
+        setShowModals={setShowModals}
       />
 
       <UserInfo />
@@ -56,7 +57,7 @@ function Layout() {
 
       <UserList />
 
-      <Modals />
+      <AddChannelModal isVisible={showModals} setIsVisible={setShowModals} />
     </Grid>
   );
 }

@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const Container = styled.div`
-  position: absolute;
+export const Container = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 10;
 
   height: 100%;
@@ -14,7 +17,7 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-export const Form = styled.div`
+export const Form = styled(motion.div)`
   width: 400px;
 
   display: flex;

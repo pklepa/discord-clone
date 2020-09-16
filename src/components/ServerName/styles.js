@@ -11,8 +11,9 @@ export const Container = styled.div`
   padding: 0 16px;
   background-color: var(--secondary);
 
-  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 0 0;
-  z-index: 2;
+  /* box-shadow: rgba(0, 0, 0, 0.2) 0 1px 0 0; */
+  /* z-index: 2; */
+  border-bottom: 1px solid var(--quaternary);
 `;
 
 export const Title = styled.h1`

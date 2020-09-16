@@ -16,6 +16,7 @@ export const Title = styled.h1`
 
 export const Grid = styled.div`
   display: grid;
+  position: relative;
 
   grid-template-columns: 72px 240px auto 240px;
   grid-template-rows: 48px auto 52px;

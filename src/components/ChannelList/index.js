@@ -31,7 +31,12 @@ function FetchServerChannels(server) {
 }
 
 function ChannelList(props) {
-  const { currentServer, currentChannel, setCurrentChannel } = props;
+  const {
+    currentServer,
+    currentChannel,
+    setCurrentChannel,
+    setShowModals,
+  } = props;
   const channels = FetchServerChannels(currentServer);
 
   return (
@@ -39,7 +44,7 @@ function ChannelList(props) {
       <Category>
         <span>Text Channels</span>
 
-        <AddCategoryIcon />
+        <AddCategoryIcon onClick={() => setShowModals(true)} />
       </Category>
 
       {channels.map((channel) => {
