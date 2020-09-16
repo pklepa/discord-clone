@@ -7,7 +7,14 @@ export const Button = styled.button`
   justify-content: center;
   flex-shrink: 0;
 
-  background-color: var(--primary);
+  background: ${(props) =>
+    props.serverPhoto
+      ? `url(${props.serverPhoto}), var(--primary)`
+      : `var(--primary)`};
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-color: var(--primary); */
   color: var(--white);
 
   height: 48px;
@@ -28,7 +35,7 @@ export const Button = styled.button`
     border-radius: 15px;
 
     &.addServer {
-      background-color: var(--discord-add-btn);
+      background: var(--discord-add-btn);
     }
 
     > svg {
@@ -77,12 +84,13 @@ export const Button = styled.button`
       props.mentions && props.mentions > 0 ? "inline" : "none"};
   }
 
-  :hover::before {
+  &.selected::before,
+  &:not(.addServer):hover::before {
     opacity: 1;
 
-    height: 20px;
+    height: 40px;
     border-radius: 10px;
-    top: calc(50% - 10px);
+    top: calc(50% - 20px);
   }
 
   > img {

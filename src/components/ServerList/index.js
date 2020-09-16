@@ -27,24 +27,27 @@ function FetchServers() {
   return servers;
 }
 
-function ServerList(props) {
-  const { currentServer, setCurrentServer } = props;
+function ServerList({ currentServer, setCurrentServer }) {
   const servers = FetchServers();
 
   return (
     <Container>
       <ServerButton isHome />
+
       <Separator />
+
       {servers.map((server) => {
         return (
           <ServerButton
             key={server.id}
             selected={currentServer.id === server.id}
+            serverPhoto={server.photoUrl}
             onClick={() => setCurrentServer(server)}
             hasNotifications
           />
         );
       })}
+
       <ServerButton isAddServerBtn />
     </Container>
   );

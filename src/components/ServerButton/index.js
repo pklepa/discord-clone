@@ -7,6 +7,7 @@ function ServerButton(props) {
   const {
     selected,
     isHome,
+    serverPhoto,
     hasNotifications,
     mentions,
     isAddServerBtn,
@@ -19,6 +20,7 @@ function ServerButton(props) {
         isAddServerBtn ? "addServer" : ""
       }`}
       isHome={isHome}
+      serverPhoto={serverPhoto}
       hasNotifications={hasNotifications}
       mentions={mentions}
       onClick={onClick}
