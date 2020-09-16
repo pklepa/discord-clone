@@ -13,7 +13,7 @@ import {
   SettingsIcon,
 } from "./styles";
 
-function UserInfo() {
+function UserInfo({ setShowLogoutModal }) {
   const username = firebase.auth().currentUser.displayName;
   const profilePic =
     firebase.auth().currentUser.photoURL || "../../assets/images/discord.svg";
@@ -42,7 +42,7 @@ function UserInfo() {
       <Icons>
         <MicIcon />
         <HeadphoneIcon />
-        <SettingsIcon />
+        <SettingsIcon onClick={() => setShowLogoutModal(true)} />
       </Icons>
     </Container>
   );
