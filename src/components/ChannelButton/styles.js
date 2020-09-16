@@ -25,6 +25,10 @@ export const Container = styled.div`
   > div span {
     margin-left: 5px;
     color: var(--senary);
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   > .channel-options {
@@ -37,10 +41,12 @@ export const Container = styled.div`
 
     > div span {
       color: var(--white);
+      max-width: 130px;
     }
 
     > .channel-options {
-      display: inline;
+      display: flex;
+      flex-shrink: 0;
     }
   }
 `;
