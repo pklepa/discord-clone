@@ -46,10 +46,13 @@ export const User = styled.div`
 
   border-radius: 4px;
   background: transparent;
-  transition: background 200ms;
+  transition: 200ms;
+
+  opacity: ${(props) => (props.isOffline ? "0.5" : "1")};
 
   &:hover {
     background: var(--primary);
+    opacity: 1;
 
     > strong {
       opacity: 1;

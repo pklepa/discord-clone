@@ -5,9 +5,9 @@ import firebase from "../../firebase";
 import { Container, Role, User, Avatar } from "./styles";
 
 function UserRow(props) {
-  const { nickname, isBot, profilePic } = props;
+  const { nickname, isBot, profilePic, isOffline } = props;
   return (
-    <User>
+    <User isOffline={isOffline}>
       <Avatar profilePic={profilePic} />
 
       <strong>{nickname}</strong>
@@ -17,6 +17,7 @@ function UserRow(props) {
   );
 }
 
+// TODO: Fetch only users that are in the current server
 function FetchServerUsers() {
   const [users, setUsers] = useState([]);
 
@@ -41,12 +42,23 @@ function FetchServerUsers() {
 }
 
 function UserList({ currentServer }) {
-  const users = FetchServerUsers();
+  const allUsers = FetchServerUsers();
+  const offlineUsers = [];
+  const onlineUsers = allUsers.filter((user) => {
+    if (user.isBot) return true;
+
+    const today = new Date();
+    const lastWeek = today.setDate(today.getDate() - 7);
+    if (user.lastLogin && user.lastLogin.toDate() > lastWeek) return true;
+    else offlineUsers.push(user);
+
+    return false;
+  });
 
   return (
     <Container>
-      <Role>Online Recently - {users.length}</Role>
-      {users.map((user) => {
+      <Role>Online Recently - {onlineUsers.length}</Role>
+      {onlineUsers.map((user) => {
         return (
           <UserRow
             key={user.id}
@@ -57,7 +69,18 @@ function UserList({ currentServer }) {
         );
       })}
 
-      <Role>Offline - 18</Role>
+      <Role>Offline - {offlineUsers.length}</Role>
+      {offlineUsers.map((user) => {
+        return (
+          <UserRow
+            key={user.id}
+            nickname={user.name}
+            isBot={user.isBot}
+            profilePic={user.photoUrl}
+            isOffline
+          />
+        );
+      })}
     </Container>
   );
 }
