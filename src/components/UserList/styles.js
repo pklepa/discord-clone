@@ -88,8 +88,9 @@ export const Avatar = styled.div`
 
   width: 32px;
   height: 32px;
-
   border-radius: 50%;
-  background-color: ${(props) =>
-    props.isBot ? "var(--mention-detail)" : "var(--primary)"};
+
+  background-image: url(${(props) => props.profilePic});
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
