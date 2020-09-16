@@ -12,7 +12,7 @@ function App() {
       <GlobalStyles />
 
       {isUserLoggedIn ? (
-        <Layout />
+        <Layout setIsUserSignedIn={setIsUserSignedIn} />
       ) : (
         <LoginPage setIsUserSignedIn={setIsUserSignedIn} />
       )}

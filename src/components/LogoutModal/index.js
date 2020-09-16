@@ -15,7 +15,7 @@ import {
   Button,
 } from "./styles";
 
-function LogoutModal({ isVisible, setIsVisible }) {
+function LogoutModal({ isVisible, setIsVisible, setIsUserSignedIn }) {
   function closeModal() {
     setIsVisible(false);
   }
@@ -23,6 +23,8 @@ function LogoutModal({ isVisible, setIsVisible }) {
   function signOut() {
     // Sign out of Firebase.
     firebase.auth().signOut();
+    setIsUserSignedIn(false);
+    closeModal();
   }
 
   const username = firebase.auth().currentUser.displayName;
