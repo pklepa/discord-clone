@@ -50,14 +50,14 @@ export const Button = styled.button`
 
     position: absolute;
     left: -17px;
-    top: calc(50% - 4.5px);
+    transform: translateY(calc(50% - 4.5px));
 
     background-color: var(--white);
 
     content: "";
     opacity: ${(props) => (props.hasNotifications ? 1 : 0)};
 
-    transition: opacity 300ms;
+    transition: opacity 300ms, height 300ms, transform 300ms;
   }
 
   &::after {
@@ -90,7 +90,7 @@ export const Button = styled.button`
 
     height: 40px;
     border-radius: 10px;
-    top: calc(50% - 20px);
+    transform: translateY(calc(50% - 20px));
   }
 
   > img {
