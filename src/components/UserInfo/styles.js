@@ -49,8 +49,27 @@ export const Icons = styled.div`
   display: flex;
   align-items: center;
 
+  position: relative;
+
   > svg:not(:first-child) {
     margin-left: 7px;
+  }
+
+  > img {
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    top: 0px;
+    z-index: 20;
+  }
+
+  > img.mute-mic {
+    left: 7px;
+  }
+
+  > img.mute-audio {
+    left: 33px;
   }
 `;
 

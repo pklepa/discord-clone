@@ -2,6 +2,8 @@ import React from "react";
 
 import firebase from "../../firebase";
 
+import RedBar from "../../assets/images/red-bar.svg";
+
 import {
   Container,
   Profile,
@@ -40,8 +42,12 @@ function UserInfo({ setShowLogoutModal }) {
       </Profile>
 
       <Icons>
+        <img className="mute-mic" src={RedBar} alt="Mute" />
         <MicIcon />
+
+        <img className="mute-audio" src={RedBar} alt="Mute" />
         <HeadphoneIcon />
+
         <SettingsIcon onClick={() => setShowLogoutModal(true)} />
       </Icons>
     </Container>
