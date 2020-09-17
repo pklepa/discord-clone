@@ -15,7 +15,12 @@ import {
   Button,
 } from "./styles";
 
-function LogoutModal({ isVisible, setIsVisible, setIsUserSignedIn }) {
+function LogoutModal({
+  currentUser,
+  isVisible,
+  setIsVisible,
+  setIsUserSignedIn,
+}) {
   function closeModal() {
     setIsVisible(false);
   }
@@ -26,8 +31,6 @@ function LogoutModal({ isVisible, setIsVisible, setIsUserSignedIn }) {
     setIsUserSignedIn(false);
     closeModal();
   }
-
-  const user = firebase.auth().currentUser;
 
   return (
     <AnimatePresence>
@@ -51,11 +54,13 @@ function LogoutModal({ isVisible, setIsVisible, setIsUserSignedIn }) {
             <Content>
               <Label>Currently signed in as</Label>
               <Profile>
-                <Avatar googleProfilePic={user.photoURL} />
+                <Avatar googleProfilePic={currentUser.photoUrl} />
 
                 <UserDetails>
-                  <h1>{user.displayName}</h1>
-                  <span>#{user.uid.match(/\d+/g).join("").slice(0, 4)}</span>
+                  <h1>{currentUser.name}</h1>
+                  <span>
+                    #{currentUser.uid.match(/\d+/g).join("").slice(0, 4)}
+                  </span>
                 </UserDetails>
               </Profile>
             </Content>

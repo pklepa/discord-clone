@@ -6,15 +6,23 @@ import Layout from "./components/Layout";
 
 function App() {
   const [isUserLoggedIn, setIsUserSignedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(false);
 
+  console.log(currentUser);
   return (
     <>
       <GlobalStyles />
 
-      {isUserLoggedIn ? (
-        <Layout setIsUserSignedIn={setIsUserSignedIn} />
+      {isUserLoggedIn && currentUser ? (
+        <Layout
+          currentUser={currentUser}
+          setIsUserSignedIn={setIsUserSignedIn}
+        />
       ) : (
-        <LoginPage setIsUserSignedIn={setIsUserSignedIn} />
+        <LoginPage
+          setCurrentUser={setCurrentUser}
+          setIsUserSignedIn={setIsUserSignedIn}
+        />
       )}
     </>
   );

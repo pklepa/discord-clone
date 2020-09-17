@@ -12,7 +12,7 @@ import AddChannelModal from "../AddChannelModal";
 import AddServerModal from "../AddServerModal";
 import LogoutModal from "../LogoutModal";
 
-function Layout({ setIsUserSignedIn }) {
+function Layout({ currentUser, setIsUserSignedIn }) {
   const [currentServer, setCurrentServer] = useState({
     name: "Discount Discord",
     id: "SRV00",
@@ -53,9 +53,13 @@ function Layout({ setIsUserSignedIn }) {
         setShowModals={setShowModals}
       />
 
-      <UserInfo setShowLogoutModal={setShowLogoutModal} />
+      <UserInfo
+        currentUser={currentUser}
+        setShowLogoutModal={setShowLogoutModal}
+      />
 
       <ChannelData
+        currentUser={currentUser}
         currentServer={currentServer}
         currentChannel={currentChannel}
       />
@@ -74,6 +78,7 @@ function Layout({ setIsUserSignedIn }) {
       />
 
       <LogoutModal
+        currentUser={currentUser}
         isVisible={showLogoutModal}
         setIsVisible={setShowLogoutModal}
         setIsUserSignedIn={setIsUserSignedIn}

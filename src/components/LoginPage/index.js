@@ -4,9 +4,7 @@ import firebase from "../../firebase";
 
 import { Container, Form, Header, LoginButton } from "./styles";
 
-function LoginPage(props) {
-  const { setIsUserSignedIn } = props;
-
+function LoginPage({ setCurrentUser, setIsUserSignedIn }) {
   function signIn() {
     // Sign into Firebase using popup auth & Google as the identity provider.
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -36,12 +34,30 @@ function LoginPage(props) {
     }
   }
 
+  async function getUserFullInformation(user) {
+    try {
+      return firebase
+        .firestore()
+        .collection("users")
+        .doc(user.uid)
+        .onSnapshot((snapshot) => {
+          const updatedUser = snapshot.data();
+
+          setCurrentUser(updatedUser);
+        });
+    } catch (error) {
+      console.error("Error in retrieving user information", error);
+    }
+  }
+
   useEffect(() => {
     // Listen to auth state changes.
     firebase.auth().onAuthStateChanged((user) => {
       // If user successfully logged-in
       if (user) {
-        saveUser(user).then(setIsUserSignedIn(true));
+        saveUser(user)
+          .then(getUserFullInformation(user))
+          .then(setIsUserSignedIn(true));
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

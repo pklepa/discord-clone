@@ -1,7 +1,5 @@
 import React from "react";
 
-import firebase from "../../firebase";
-
 import RedBar from "../../assets/images/red-bar.svg";
 
 import {
@@ -15,16 +13,14 @@ import {
   SettingsIcon,
 } from "./styles";
 
-function UserInfo({ setShowLogoutModal }) {
-  const user = firebase.auth().currentUser;
-
+function UserInfo({ currentUser, setShowLogoutModal }) {
   return (
     <Container>
       <Profile onClick={() => setShowLogoutModal(true)}>
-        <Avatar googleProfilePic={user.photoURL} />
+        <Avatar googleProfilePic={currentUser.photoUrl} />
         <UserData>
-          <strong>{user.displayName}</strong>
-          <span>#{user.uid.match(/\d+/g).join("").slice(0, 4)}</span>
+          <strong>{currentUser.name}</strong>
+          <span>#{currentUser.uid.match(/\d+/g).join("").slice(0, 4)}</span>
         </UserData>
       </Profile>
 

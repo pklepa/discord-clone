@@ -33,19 +33,20 @@ function FetchChannelMessages(server, channel) {
   return messages;
 }
 
-function ChannelData(props) {
-  const { currentServer, currentChannel } = props;
+function ChannelData({ currentUser, currentServer, currentChannel }) {
   const messages = FetchChannelMessages(currentServer, currentChannel);
 
-  const currentUser = {
-    author: firebase.auth().currentUser.displayName,
-    profilePicUrl:
-      firebase.auth().currentUser.photoURL || "../../assets/images/discord.svg",
-  };
   const [inputText, setInputText] = useState("");
 
   // Saves a new message to your Cloud Firestore database.
   function saveMessage(messageText) {
+    // Tests is current user is admin in current server
+    const isAdmin =
+      currentUser.isAdmin &&
+      currentUser.isAdmin.reduce((prev, curr) => {
+        return prev || curr === currentServer.id;
+      }, false);
+
     // Add a new message entry to the database.
     return firebase
       .firestore()
@@ -55,11 +56,12 @@ function ChannelData(props) {
       .doc(currentChannel.id)
       .collection("messages")
       .add({
-        author: currentUser.author,
+        author: currentUser.name,
         text: messageText,
-        profilePicUrl: currentUser.profilePicUrl,
+        profilePicUrl: currentUser.photoUrl,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         isBot: false,
+        isAdmin: isAdmin,
       })
       .catch(function (error) {
         console.error("Error writing new message to database", error);
@@ -104,6 +106,7 @@ function ChannelData(props) {
               avatarUrl={msg.profilePicUrl}
               content={msg.text}
               isBot={msg.isBot}
+              isAdmin={msg.isAdmin}
             />
           );
         })}
