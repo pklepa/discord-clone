@@ -27,7 +27,11 @@ function FetchServers() {
   return servers;
 }
 
-function ServerList({ currentServer, setCurrentServer }) {
+function ServerList({
+  currentServer,
+  setCurrentServer,
+  setShowAddServerModal,
+}) {
   const servers = FetchServers();
 
   return (
@@ -48,7 +52,10 @@ function ServerList({ currentServer, setCurrentServer }) {
         );
       })}
 
-      <ServerButton isAddServerBtn />
+      <ServerButton
+        isAddServerBtn
+        onClick={() => setShowAddServerModal(true)}
+      />
     </Container>
   );
 }

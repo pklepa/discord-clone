@@ -25,11 +25,12 @@ function Layout({ setIsUserSignedIn }) {
 
   const [showModals, setShowModals] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const [showAddServerModal, setShowAddServerModal] = useState(true);
+  const [showAddServerModal, setShowAddServerModal] = useState(false);
 
   return (
     <Grid>
       <ServerList
+        setShowAddServerModal={setShowAddServerModal}
         currentServer={currentServer}
         setCurrentServer={(server) => {
           setCurrentServer(server);
