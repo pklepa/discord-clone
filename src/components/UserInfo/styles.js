@@ -16,6 +16,13 @@ export const Container = styled.div`
 export const Profile = styled.div`
   display: flex;
   align-items: center;
+
+  cursor: pointer;
+  transition: filter 300ms;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
 `;
 
 export const Avatar = styled.div`

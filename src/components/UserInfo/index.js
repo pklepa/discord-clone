@@ -16,28 +16,15 @@ import {
 } from "./styles";
 
 function UserInfo({ setShowLogoutModal }) {
-  const username = firebase.auth().currentUser.displayName;
-  const profilePic =
-    firebase.auth().currentUser.photoURL || "../../assets/images/discord.svg";
-
-  // Adds a size to Google Profile pics URLs.
-  function addSizeToGoogleProfilePic(url) {
-    if (
-      url.indexOf("googleusercontent.com") !== -1 &&
-      url.indexOf("?") === -1
-    ) {
-      return url + "?sz=32";
-    }
-    return url;
-  }
+  const user = firebase.auth().currentUser;
 
   return (
     <Container>
-      <Profile>
-        <Avatar googleProfilePic={addSizeToGoogleProfilePic(profilePic)} />
+      <Profile onClick={() => setShowLogoutModal(true)}>
+        <Avatar googleProfilePic={user.photoURL} />
         <UserData>
-          <strong>{username}</strong>
-          <span>#1728</span>
+          <strong>{user.displayName}</strong>
+          <span>#{user.uid.match(/\d+/g).join("").slice(0, 4)}</span>
         </UserData>
       </Profile>
 

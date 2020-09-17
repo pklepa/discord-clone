@@ -26,6 +26,7 @@ function LoginPage(props) {
             name: user.displayName,
             photoUrl: user.photoURL,
             defaultServers: ["SRV00", "SRV01"],
+            tag: user.uid.match(/\d+/g).join("").slice(0, 4),
             lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
           },
           { merge: true }

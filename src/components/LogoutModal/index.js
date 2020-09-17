@@ -27,9 +27,7 @@ function LogoutModal({ isVisible, setIsVisible, setIsUserSignedIn }) {
     closeModal();
   }
 
-  const username = firebase.auth().currentUser.displayName;
-  const profilePic =
-    firebase.auth().currentUser.photoURL || "../../assets/images/discord.svg";
+  const user = firebase.auth().currentUser;
 
   return (
     <AnimatePresence>
@@ -53,11 +51,11 @@ function LogoutModal({ isVisible, setIsVisible, setIsUserSignedIn }) {
             <Content>
               <Label>Currently signed in as</Label>
               <Profile>
-                <Avatar googleProfilePic={profilePic} />
+                <Avatar googleProfilePic={user.photoURL} />
 
                 <UserDetails>
-                  <h1>{username}</h1>
-                  <span>#1234</span>
+                  <h1>{user.displayName}</h1>
+                  <span>#{user.uid.match(/\d+/g).join("").slice(0, 4)}</span>
                 </UserDetails>
               </Profile>
             </Content>
