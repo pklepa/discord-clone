@@ -60,7 +60,7 @@ function Layout({ setIsUserSignedIn }) {
         currentChannel={currentChannel}
       />
 
-      <UserList />
+      <UserList currentServer={currentServer} />
 
       <AddServerModal
         isVisible={showAddServerModal}

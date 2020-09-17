@@ -5,7 +5,7 @@ import firebase from "../../firebase";
 import { Container, Role, User, Avatar } from "./styles";
 
 function UserRow(props) {
-  const { nickname, isBot, profilePic, isOffline } = props;
+  const { nickname, isBot, isAdmin, profilePic, isOffline } = props;
   return (
     <User isOffline={isOffline}>
       <Avatar profilePic={profilePic} />
@@ -13,6 +13,7 @@ function UserRow(props) {
       <strong>{nickname}</strong>
 
       {isBot && <span>Bot</span>}
+      {isAdmin && <span className="admin">Adm</span>}
     </User>
   );
 }
@@ -65,6 +66,12 @@ function UserList({ currentServer }) {
             nickname={user.name}
             isBot={user.isBot}
             profilePic={user.photoUrl}
+            isAdmin={
+              user.isAdmin &&
+              user.isAdmin.reduce((prev, curr) => {
+                return prev || curr === currentServer.id;
+              }, false)
+            }
           />
         );
       })}

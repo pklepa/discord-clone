@@ -83,6 +83,10 @@ export const User = styled.div`
     text-transform: uppercase;
     font-weight: bold;
     font-size: 10px;
+
+    &.admin {
+      background-color: var(--notification);
+    }
   }
 `;
 
