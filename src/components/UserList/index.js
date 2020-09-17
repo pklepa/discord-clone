@@ -44,8 +44,18 @@ function FetchServerUsers() {
 
 function UserList({ currentServer }) {
   const allUsers = FetchServerUsers();
+  const usersInCurrentServer = allUsers.filter((user) => {
+    if (user.defaultServers.indexOf(currentServer.id) > -1) {
+      return true;
+    } else if (user.servers && user.servers.indexOf(currentServer.id) > -1) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
   const offlineUsers = [];
-  const onlineUsers = allUsers.filter((user) => {
+  const onlineUsers = usersInCurrentServer.filter((user) => {
     if (user.isBot) return true;
 
     const today = new Date();

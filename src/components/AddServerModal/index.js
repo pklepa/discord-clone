@@ -98,13 +98,12 @@ function AddServerModal({ isVisible, setIsVisible }) {
                   value={serverPhotoUrl}
                   placeholder={serverPhotoPreview}
                   onChange={(e) => {
+                    // eslint-disable-next-line no-useless-escape
                     const pattern = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
                     const str = e.target.value;
 
                     if (pattern.test(str)) setServerPhotoUrl(str);
                     else alert("Image must be a valid URL");
-
-                    // setServerPhotoUrl(e.target.value);
                   }}
                 />
 
