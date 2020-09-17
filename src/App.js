@@ -8,7 +8,6 @@ function App() {
   const [isUserLoggedIn, setIsUserSignedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
 
-  console.log(currentUser);
   return (
     <>
       <GlobalStyles />
