@@ -9,6 +9,7 @@ import UserInfo from "../UserInfo";
 import UserList from "../UserList";
 import ChannelData from "../ChannelData";
 import AddChannelModal from "../AddChannelModal";
+import AddServerModal from "../AddServerModal";
 import LogoutModal from "../LogoutModal";
 
 function Layout({ setIsUserSignedIn }) {
@@ -24,6 +25,7 @@ function Layout({ setIsUserSignedIn }) {
 
   const [showModals, setShowModals] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [showAddServerModal, setShowAddServerModal] = useState(true);
 
   return (
     <Grid>
@@ -58,6 +60,11 @@ function Layout({ setIsUserSignedIn }) {
       />
 
       <UserList />
+
+      <AddServerModal
+        isVisible={showAddServerModal}
+        setIsVisible={setShowAddServerModal}
+      />
 
       <AddChannelModal
         currentServer={currentServer}
