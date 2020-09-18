@@ -67,6 +67,7 @@ function Layout({ currentUser, setIsUserSignedIn }) {
       <UserList currentServer={currentServer} />
 
       <AddServerModal
+        currentUser={currentUser}
         isVisible={showAddServerModal}
         setIsVisible={setShowAddServerModal}
       />

@@ -16,7 +16,7 @@ import {
   Button,
 } from "./styles";
 
-function AddServerModal({ isVisible, setIsVisible }) {
+function AddServerModal({ isVisible, setIsVisible, currentUser }) {
   const [serverName, setServerName] = useState("");
   const [serverDescription, setServerDescription] = useState("");
   const [serverPhotoUrl, setServerPhotoUrl] = useState("");
@@ -34,8 +34,15 @@ function AddServerModal({ isVisible, setIsVisible }) {
         description: serverDescription || "A cool place to chat.",
         photoUrl: serverPhotoPreview,
       })
-      .then(() => {
-        alert("done");
+      .then(function (docRef) {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(currentUser.uid)
+          .update({
+            servers: firebase.firestore.FieldValue.arrayUnion(docRef.id),
+            isAdmin: firebase.firestore.FieldValue.arrayUnion(docRef.id),
+          });
       })
       .catch(function (error) {
         console.error("Error adding new server to database", error);
@@ -139,7 +146,13 @@ function AddServerModal({ isVisible, setIsVisible }) {
               <Button onClick={closeModal} isCancel>
                 Cancel
               </Button>
-              <Button onClick={addServerToFirebase}>Create server</Button>
+              <Button
+                onClick={() => {
+                  addServerToFirebase();
+                }}
+              >
+                Create server
+              </Button>
             </Footer>
           </Form>
         </Container>
