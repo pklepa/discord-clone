@@ -47,7 +47,7 @@ function ServerList({
             selected={currentServer.id === server.id}
             serverPhoto={server.photoUrl}
             onClick={() => setCurrentServer(server)}
-            hasNotifications
+            // hasNotifications
           />
         );
       })}

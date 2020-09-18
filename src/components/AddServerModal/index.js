@@ -26,15 +26,23 @@ function AddServerModal({ isVisible, setIsVisible, currentUser }) {
 
   // Saves a new server to Cloud Firestore database.
   function addServerToFirebase() {
-    firebase
-      .firestore()
-      .collection("servers")
-      .add({
-        name: serverName || "New Server",
-        description: serverDescription || "A cool place to chat.",
-        photoUrl: serverPhotoPreview,
+    const docRef = firebase.firestore().collection("servers").doc();
+
+    docRef.set({
+      name: serverName || "New Server",
+      description: serverDescription || "A cool place to chat.",
+      photoUrl: serverPhotoPreview,
+    });
+
+    docRef
+      .collection("channels")
+      .doc("CH00")
+      .set({
+        name: "welcome",
+        description: "testing my async ???",
       })
-      .then(function (docRef) {
+
+      .then(() => {
         firebase
           .firestore()
           .collection("users")
