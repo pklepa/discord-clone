@@ -33,6 +33,10 @@ function FetchChannelMessages(server, channel) {
   return messages;
 }
 
+// TODO: Aggregate same author's messages
+// TODO: Implement mentions (?)
+// TODO: Format date conditionally (Today, at 10:30 / Yesterday, at 16:22)
+
 function ChannelData({ currentUser, currentServer, currentChannel }) {
   const messages = FetchChannelMessages(currentServer, currentChannel);
 

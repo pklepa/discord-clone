@@ -4,6 +4,8 @@ import firebase from "../../firebase";
 
 import { Container, Form, Header, LoginButton } from "./styles";
 
+// TODO: Redesign login page (background-image, welcome text, brief explanation)
+
 function LoginPage({ setCurrentUser, setIsUserSignedIn }) {
   function signIn() {
     // Sign into Firebase using popup auth & Google as the identity provider.

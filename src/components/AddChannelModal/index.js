@@ -25,8 +25,10 @@ function AddChannelModal({ currentServer, isVisible, setIsVisible }) {
       .doc(currentServer.id)
       .collection("channels")
       .add({
-        name: channelName,
-        description: channelDescription,
+        name: channelName || "new-channel",
+        description:
+          channelDescription ||
+          "It's ok Rocky, you can go when you feel like it.",
       })
       .catch(function (error) {
         console.error("Error adding new channel to database", error);
@@ -66,6 +68,7 @@ function AddChannelModal({ currentServer, isVisible, setIsVisible }) {
                 type="text"
                 maxLength="20"
                 value={channelName}
+                placeholder="new-channel"
                 onChange={(e) => {
                   const pattern = /[\w-]/;
                   const str = e.target.value.toLowerCase();
@@ -81,6 +84,7 @@ function AddChannelModal({ currentServer, isVisible, setIsVisible }) {
                 type="text"
                 maxLength="80"
                 value={channelDescription}
+                placeholder="It's ok Rocky, you can go when you feel like it."
                 onChange={(e) => {
                   setChannelDescription(e.target.value);
                 }}

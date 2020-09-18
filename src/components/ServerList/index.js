@@ -5,6 +5,9 @@ import firebase from "../../firebase";
 import { Container, Separator } from "./styles";
 import ServerButton from "../ServerButton";
 
+// TODO: Add a tooltip by the side of the button with the name of the server when hover
+// TODO: Create a About Page / Modal when clicked on Home button
+
 function FetchServers() {
   const [servers, setServers] = useState([]);
 

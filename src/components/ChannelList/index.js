@@ -30,6 +30,9 @@ function FetchServerChannels(server) {
   return channels;
 }
 
+// TODO: Add categories for channels (at least 2: default/welcome channel and the rest)
+// TODO: Add the option to delete the channel (admin only)
+
 function ChannelList(props) {
   const {
     currentServer,

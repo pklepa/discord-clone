@@ -8,6 +8,8 @@ import {
   Description,
 } from "./styles";
 
+// TODO: Add a Github link on top
+
 function ChannelInfo({ currentChannel }) {
   return (
     <Container>

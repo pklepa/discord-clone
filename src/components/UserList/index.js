@@ -18,7 +18,10 @@ function UserRow(props) {
   );
 }
 
-// TODO: Fetch only users that are in the current server
+// TODO: Pop a modal with each user information when clicked
+// TODO: Create a modal with each user info
+// TODO: Allow user to invites other users to a server through this modal
+
 function FetchServerUsers() {
   const [users, setUsers] = useState([]);
 
