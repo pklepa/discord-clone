@@ -20,6 +20,7 @@ html, body, #root {
 
 :root {
   --primary: #36393f;
+  --primary-hover: #303338;
   --secondary: #2f3136;
   --tertiary: rgb(32,34,37);
   --quaternary: #292b2f;

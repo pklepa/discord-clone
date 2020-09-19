@@ -12,13 +12,17 @@ function ChannelMessage(props) {
     hasMention,
     isBot,
     isAdmin,
+    sameAuthor,
   } = props;
   return (
     <Container className={hasMention ? "mention" : ""}>
-      <Avatar className={isBot ? "bot" : ""} avatarUrl={avatarUrl} />
+      <Avatar
+        className={`${isBot && "bot"} ${sameAuthor && "hide"}`}
+        avatarUrl={avatarUrl}
+      />
 
-      <Message>
-        <Header>
+      <Message sameAuthor={sameAuthor}>
+        <Header className={`${sameAuthor && "hide"}`}>
           <strong>{author}</strong>
 
           {isBot && <span>Bot</span>}

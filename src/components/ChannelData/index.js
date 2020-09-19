@@ -97,6 +97,22 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
           isBot
         />
 
+        <ChannelMessage
+          author="Robocop"
+          date="13/09/2020"
+          content="testeeeeee"
+          isBot
+          sameAuthor
+        />
+
+        <ChannelMessage
+          author="Robocop"
+          date="13/09/2020"
+          content="ANOTHER ONE"
+          isBot
+          sameAuthor
+        />
+
         {messages.map((msg) => {
           return (
             <ChannelMessage

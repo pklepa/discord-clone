@@ -9,21 +9,22 @@ export const Container = styled.div`
 
   background-color: transparent;
 
+  &:hover {
+    background-color: var(--primary-hover);
+  }
+
   &.mention {
     background-color: var(--mention-message);
 
     border-left: 2px solid var(--mention-detail);
     padding-left: 14px;
   }
-
-  & + div {
-    margin-top: 13px;
-  }
 `;
 
 export const Avatar = styled.div`
   width: 40px;
   height: 40px;
+  margin-top: 13px;
 
   background-color: var(--secondary);
   background-image: url(${(props) => props.avatarUrl});
@@ -33,16 +34,21 @@ export const Avatar = styled.div`
   &.bot {
     background-color: var(--mention-detail);
   }
+
+  &.hide {
+    display: none;
+  }
 `;
 
 export const Message = styled.div`
-  min-height: 40px;
+  min-height: ${(props) => (props.sameAuthor ? "10px" : "40px")};
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  margin-left: 17px;
+  margin-top: ${(props) => (props.sameAuthor ? "0" : "13px")};
+  margin-left: ${(props) => (props.sameAuthor ? "57px" : "17px")};
 `;
 
 export const Header = styled.div`
@@ -74,6 +80,10 @@ export const Header = styled.div`
     margin-left: 6px;
     color: var(--gray);
     font-size: 11px;
+  }
+
+  &.hide {
+    display: none;
   }
 `;
 
