@@ -6,7 +6,7 @@ export { Mention } from "./styles";
 function ChannelMessage(props) {
   const {
     author,
-    date,
+    timestamp,
     content,
     avatarUrl,
     hasMention,
@@ -14,6 +14,7 @@ function ChannelMessage(props) {
     isAdmin,
     sameAuthor,
   } = props;
+
   return (
     <Container className={hasMention ? "mention" : ""}>
       <Avatar
@@ -21,14 +22,17 @@ function ChannelMessage(props) {
         avatarUrl={avatarUrl}
       />
 
-      <Message className={`${sameAuthor && "same-author"}`}>
+      <Message
+        className={`${sameAuthor && "same-author"}`}
+        time={timestamp.toTimeString().match(/(\d)+:{1}(\d){2}/)[0]}
+      >
         <Header className={`${sameAuthor && "hide"}`}>
           <strong>{author}</strong>
 
           {isBot && <span>Bot</span>}
           {isAdmin && <span className="admin">Adm</span>}
 
-          <time>{date}</time>
+          <time>{timestamp.toLocaleDateString()}</time>
         </Header>
 
         <Content>{content}</Content>

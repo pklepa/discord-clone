@@ -90,7 +90,7 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
       <Messages ref={messagesRef}>
         <ChannelMessage
           author="Robocop"
-          date="13/09/2020"
+          timestamp={new Date(95, 6, 6)}
           content={
             <>
               <Mention>@Rolamento</Mention>, good luck!
@@ -102,7 +102,7 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
 
         <ChannelMessage
           author="Robocop"
-          date="13/09/2020"
+          timestamp={new Date(95, 6, 6)}
           content="testeeeeee"
           isBot
           sameAuthor
@@ -110,7 +110,7 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
 
         <ChannelMessage
           author="Robocop"
-          date="13/09/2020"
+          timestamp={new Date(95, 6, 6)}
           content="ANOTHER ONE"
           isBot
           sameAuthor
@@ -124,11 +124,7 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
             <ChannelMessage
               key={msg.id}
               author={msg.author}
-              date={
-                msg.timestamp
-                  ? msg.timestamp.toDate().toLocaleDateString()
-                  : Date.now()
-              }
+              timestamp={msg.timestamp ? msg.timestamp.toDate() : new Date()}
               avatarUrl={msg.profilePicUrl}
               content={msg.text}
               isBot={msg.isBot}

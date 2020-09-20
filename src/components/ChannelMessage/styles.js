@@ -71,7 +71,7 @@ export const Message = styled.div`
       left: -53px;
       top: 3px;
 
-      content: "00:00";
+      content: "${(props) => props.time}";
     }
   }
 `;
