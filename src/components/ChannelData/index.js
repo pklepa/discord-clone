@@ -42,6 +42,9 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
 
   const [inputText, setInputText] = useState("");
 
+  // This variable is used to determine if the ChannelMessage is to be render with or without the author's name and avatar
+  let lastAuthor;
+
   // Saves a new message to your Cloud Firestore database.
   function saveMessage(messageText) {
     // Tests is current user is admin in current server
@@ -114,6 +117,9 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
         />
 
         {messages.map((msg) => {
+          const sameAuthor = lastAuthor === msg.author;
+          lastAuthor = msg.author;
+
           return (
             <ChannelMessage
               key={msg.id}
@@ -127,6 +133,7 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
               content={msg.text}
               isBot={msg.isBot}
               isAdmin={msg.isAdmin}
+              sameAuthor={sameAuthor}
             />
           );
         })}
