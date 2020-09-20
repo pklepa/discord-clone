@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import firebase from "../../firebase";
 
 import ChannelMessage, { Mention } from "../ChannelMessage";
+import DateRow from "../DateRow";
 
 import { Container, Messages, InputWrapper, Input, InputIcon } from "./styles";
 
@@ -33,7 +34,6 @@ function FetchChannelMessages(server, channel) {
   return messages;
 }
 
-// TODO: Aggregate same author's messages
 // TODO: Implement mentions (?)
 // TODO: Format date conditionally (Today, at 10:30 / Yesterday, at 16:22)
 
@@ -44,6 +44,7 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
 
   // This variable is used to determine if the ChannelMessage is to be render with or without the author's name and avatar
   let lastAuthor;
+  let lastDate = new Date(0);
 
   // Saves a new message to your Cloud Firestore database.
   function saveMessage(messageText) {
@@ -117,20 +118,29 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
         />
 
         {messages.map((msg) => {
+          const newDay = !sameDay(
+            lastDate,
+            msg.timestamp ? msg.timestamp.toDate() : new Date()
+          );
+          lastDate = msg.timestamp ? msg.timestamp.toDate() : new Date();
+
           const sameAuthor = lastAuthor === msg.author;
           lastAuthor = msg.author;
 
           return (
-            <ChannelMessage
-              key={msg.id}
-              author={msg.author}
-              timestamp={msg.timestamp ? msg.timestamp.toDate() : new Date()}
-              avatarUrl={msg.profilePicUrl}
-              content={msg.text}
-              isBot={msg.isBot}
-              isAdmin={msg.isAdmin}
-              sameAuthor={sameAuthor}
-            />
+            <React.Fragment key={msg.id}>
+              {newDay && <DateRow date={msg.timestamp.toDate()} />}
+
+              <ChannelMessage
+                author={msg.author}
+                timestamp={msg.timestamp ? msg.timestamp.toDate() : new Date()}
+                avatarUrl={msg.profilePicUrl}
+                content={msg.text}
+                isBot={msg.isBot}
+                isAdmin={msg.isAdmin}
+                sameAuthor={sameAuthor && !newDay}
+              />
+            </React.Fragment>
           );
         })}
       </Messages>
@@ -151,6 +161,14 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
         <InputIcon />
       </InputWrapper>
     </Container>
+  );
+}
+
+function sameDay(d1, d2) {
+  return (
+    d1.getFullYear() === d2.getFullYear() &&
+    d1.getMonth() === d2.getMonth() &&
+    d1.getDate() === d2.getDate()
   );
 }
 
