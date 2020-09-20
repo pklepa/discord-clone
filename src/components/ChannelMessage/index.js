@@ -21,7 +21,7 @@ function ChannelMessage(props) {
         avatarUrl={avatarUrl}
       />
 
-      <Message sameAuthor={sameAuthor}>
+      <Message className={`${sameAuthor && "same-author"}`}>
         <Header className={`${sameAuthor && "hide"}`}>
           <strong>{author}</strong>
 

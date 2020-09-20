@@ -11,6 +11,10 @@ export const Container = styled.div`
 
   &:hover {
     background-color: var(--primary-hover);
+
+    & > div.same-author::before {
+      opacity: 1;
+    }
   }
 
   &.mention {
@@ -47,8 +51,29 @@ export const Message = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  margin-top: ${(props) => (props.sameAuthor ? "0" : "13px")};
-  margin-left: ${(props) => (props.sameAuthor ? "57px" : "17px")};
+  margin-top: 13px;
+  margin-left: 17px;
+
+  position: relative;
+
+  &.same-author {
+    min-height: 10px;
+    margin-top: 0;
+    margin-left: 57px;
+
+    &::before {
+      opacity: 0;
+
+      color: var(--gray);
+      font-size: 12px;
+
+      position: absolute;
+      left: -53px;
+      top: 3px;
+
+      content: "00:00";
+    }
+  }
 `;
 
 export const Header = styled.div`
