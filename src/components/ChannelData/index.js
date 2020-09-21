@@ -129,7 +129,11 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
 
           return (
             <React.Fragment key={msg.id}>
-              {newDay && <DateRow date={msg.timestamp.toDate()} />}
+              {newDay && (
+                <DateRow
+                  date={msg.timestamp ? msg.timestamp.toDate() : new Date()}
+                />
+              )}
 
               <ChannelMessage
                 author={msg.author}
