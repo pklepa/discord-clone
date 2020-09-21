@@ -89,7 +89,7 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
   return (
     <Container>
       <Messages ref={messagesRef}>
-        <ChannelMessage
+        {/* <ChannelMessage
           author="Robocop"
           timestamp={new Date(95, 6, 6)}
           content={
@@ -99,23 +99,7 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
           }
           hasMention
           isBot
-        />
-
-        <ChannelMessage
-          author="Robocop"
-          timestamp={new Date(95, 6, 6)}
-          content="testeeeeee"
-          isBot
-          sameAuthor
-        />
-
-        <ChannelMessage
-          author="Robocop"
-          timestamp={new Date(95, 6, 6)}
-          content="ANOTHER ONE"
-          isBot
-          sameAuthor
-        />
+        /> */}
 
         {messages.map((msg) => {
           const newDay = !sameDay(

@@ -9,6 +9,7 @@ export const Container = styled.div`
 
   width: 100%;
   padding: 13px;
+  padding-bottom: 6px;
 
   > span {
     color: var(--gray);
