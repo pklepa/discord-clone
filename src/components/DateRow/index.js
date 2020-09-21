@@ -7,7 +7,7 @@ function DateRow({ date }) {
     <Container>
       <hr />
       <span>
-        {date.toLocaleDateString("pt-br", {
+        {date.toLocaleDateString("en", {
           year: "numeric",
           month: "long",
           day: "numeric",
