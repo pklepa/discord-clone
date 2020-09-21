@@ -4,7 +4,7 @@ export const Container = styled.div`
   height: 100%;
   width: 100%;
 
-  background-color: var(--secondary);
+  background: url("${(props) => props.img}");
   z-index: 10;
 
   position: absolute;
@@ -25,7 +25,7 @@ export const Form = styled.div`
   justify-content: space-between;
 
   background-color: var(--primary);
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.4);
   border-radius: 5px;
 `;
 

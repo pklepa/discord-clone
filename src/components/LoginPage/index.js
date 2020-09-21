@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 
 import firebase from "../../firebase";
 
+import BackgroundImg from "../../assets/images/discordBackground.jpg";
+
 import { Container, Form, Header, LoginButton } from "./styles";
 
-// TODO: Redesign login page (background-image, welcome text, brief explanation)
+// TODO: Redesign login page (welcome text, brief explanation)
 
 function LoginPage({ setCurrentUser, setIsUserSignedIn }) {
   function signIn() {
@@ -66,7 +68,7 @@ function LoginPage({ setCurrentUser, setIsUserSignedIn }) {
   }, []);
 
   return (
-    <Container>
+    <Container img={BackgroundImg}>
       <Form>
         <Header>
           <h1>Welcome back!</h1>
