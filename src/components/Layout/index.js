@@ -64,7 +64,11 @@ function Layout({ currentUser, setIsUserSignedIn }) {
         currentChannel={currentChannel}
       />
 
-      <UserList currentServer={currentServer} />
+      <UserList
+        currentServer={currentServer}
+        currentUser={currentUser}
+        setShowLogoutModal={setShowLogoutModal}
+      />
 
       <AddServerModal
         currentUser={currentUser}

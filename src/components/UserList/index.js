@@ -5,9 +5,9 @@ import firebase from "../../firebase";
 import { Container, Role, User, Avatar } from "./styles";
 
 function UserRow(props) {
-  const { nickname, isBot, isAdmin, profilePic, isOffline } = props;
+  const { nickname, isBot, isAdmin, profilePic, isOffline, onClick } = props;
   return (
-    <User isOffline={isOffline}>
+    <User isOffline={isOffline} onClick={onClick}>
       <Avatar profilePic={profilePic} />
 
       <strong>{nickname}</strong>
@@ -45,7 +45,7 @@ function FetchServerUsers() {
   return users;
 }
 
-function UserList({ currentServer }) {
+function UserList({ currentUser, currentServer, setShowLogoutModal }) {
   const allUsers = FetchServerUsers();
   const usersInCurrentServer = allUsers.filter((user) => {
     if (user.defaultServers.indexOf(currentServer.id) > -1) {
@@ -85,6 +85,11 @@ function UserList({ currentServer }) {
                 return prev || curr === currentServer.id;
               }, false)
             }
+            onClick={() => {
+              user.id === currentUser.uid
+                ? setShowLogoutModal(true)
+                : console.log("not me", user.name);
+            }}
           />
         );
       })}
