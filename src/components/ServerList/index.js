@@ -33,13 +33,14 @@ function FetchServers() {
 function ServerList({
   currentServer,
   setCurrentServer,
+  setShowAboutModal,
   setShowAddServerModal,
 }) {
   const servers = FetchServers();
 
   return (
     <Container>
-      <ServerButton isHome />
+      <ServerButton isHome onClick={() => setShowAboutModal(true)} />
 
       <Separator />
 
