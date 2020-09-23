@@ -68,7 +68,7 @@ export const Icons = styled.div`
 
     position: absolute;
     top: 0px;
-    z-index: 20;
+    z-index: 2;
   }
 
   > img.mute-mic {
