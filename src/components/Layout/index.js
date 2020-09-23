@@ -24,7 +24,7 @@ function Layout({ currentUser, setIsUserSignedIn }) {
     description: "Say hello!",
   });
 
-  const [showModals, setShowModals] = useState(false);
+  const [showAddChannelModal, setShowAddChannelModal] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(true);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showAddServerModal, setShowAddServerModal] = useState(false);
@@ -53,7 +53,7 @@ function Layout({ currentUser, setIsUserSignedIn }) {
         currentServer={currentServer}
         currentChannel={currentChannel}
         setCurrentChannel={setCurrentChannel}
-        setShowModals={setShowModals}
+        setShowAddChannelModal={setShowAddChannelModal}
       />
 
       <UserInfo
@@ -83,8 +83,8 @@ function Layout({ currentUser, setIsUserSignedIn }) {
 
       <AddChannelModal
         currentServer={currentServer}
-        isVisible={showModals}
-        setIsVisible={setShowModals}
+        isVisible={showAddChannelModal}
+        setIsVisible={setShowAddChannelModal}
       />
 
       <LogoutModal
