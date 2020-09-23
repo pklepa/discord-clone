@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/discord-clone/static/js/main.8f722935.chunk.js",
+    "main.js.map": "/discord-clone/static/js/main.8f722935.chunk.js.map",
+    "runtime-main.js": "/discord-clone/static/js/runtime-main.f533448a.js",
+    "runtime-main.js.map": "/discord-clone/static/js/runtime-main.f533448a.js.map",
+    "static/js/2.55e47be2.chunk.js": "/discord-clone/static/js/2.55e47be2.chunk.js",
+    "static/js/2.55e47be2.chunk.js.map": "/discord-clone/static/js/2.55e47be2.chunk.js.map",
+    "index.html": "/discord-clone/index.html",
+    "precache-manifest.11ba27568e22bd0a2620cdb1b8a8f324.js": "/discord-clone/precache-manifest.11ba27568e22bd0a2620cdb1b8a8f324.js",
+    "service-worker.js": "/discord-clone/service-worker.js",
+    "static/js/2.55e47be2.chunk.js.LICENSE.txt": "/discord-clone/static/js/2.55e47be2.chunk.js.LICENSE.txt",
+    "static/media/discord.svg": "/discord-clone/static/media/discord.09f27433.svg",
+    "static/media/discordBackground.jpg": "/discord-clone/static/media/discordBackground.fd91131e.jpg",
+    "static/media/red-bar.svg": "/discord-clone/static/media/red-bar.12426016.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f533448a.js",
+    "static/js/2.55e47be2.chunk.js",
+    "static/js/main.8f722935.chunk.js"
+  ]
+}
