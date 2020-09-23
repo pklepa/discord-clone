@@ -4,6 +4,7 @@ import firebase from "../../firebase";
 
 import ChannelMessage, { Mention } from "../ChannelMessage";
 import DateRow from "../DateRow";
+import WelcomeMessage from "../WelcomeMessage";
 
 import { Container, Messages, InputWrapper, Input, InputIcon } from "./styles";
 
@@ -100,6 +101,8 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
           hasMention
           isBot
         /> */}
+
+        <WelcomeMessage channelName={currentChannel.name} />
 
         {messages.map((msg) => {
           const newDay = !sameDay(

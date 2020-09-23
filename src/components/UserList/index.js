@@ -85,10 +85,10 @@ function UserList({ currentUser, currentServer, setShowLogoutModal }) {
                 return prev || curr === currentServer.id;
               }, false)
             }
-            onClick={() => {
+            onClick={(e) => {
               user.id === currentUser.uid
                 ? setShowLogoutModal(true)
-                : console.log("not me", user.name);
+                : e.preventDefault();
             }}
           />
         );
