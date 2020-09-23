@@ -11,12 +11,16 @@ import ChannelData from "../ChannelData";
 import AboutModal from "../AboutModal";
 import AddChannelModal from "../AddChannelModal";
 import AddServerModal from "../AddServerModal";
+import EditServerModal from "../EditServerModal";
 import LogoutModal from "../LogoutModal";
 
 function Layout({ currentUser, setIsUserSignedIn }) {
   const [currentServer, setCurrentServer] = useState({
     name: "Discount Discord",
     id: "SRV00",
+    description: "It's just like Discord, but cheaper.",
+    photoUrl:
+      "https://dygtyjqp7pi0m.cloudfront.net/i/8426/9789666_2.jpg?v=8CD1743E15E9DB0",
   });
   const [currentChannel, setCurrentChannel] = useState({
     id: "CH00",
@@ -28,6 +32,7 @@ function Layout({ currentUser, setIsUserSignedIn }) {
   const [showAboutModal, setShowAboutModal] = useState(true);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showAddServerModal, setShowAddServerModal] = useState(false);
+  const [showEditServerModal, setShowEditServerModal] = useState(false);
 
   return (
     <Grid>
@@ -45,7 +50,10 @@ function Layout({ currentUser, setIsUserSignedIn }) {
         }}
       />
 
-      <ServerName currentServer={currentServer} />
+      <ServerName
+        currentServer={currentServer}
+        setShowEditServerModal={setShowEditServerModal}
+      />
 
       <ChannelInfo currentChannel={currentChannel} />
 
@@ -79,6 +87,12 @@ function Layout({ currentUser, setIsUserSignedIn }) {
         currentUser={currentUser}
         isVisible={showAddServerModal}
         setIsVisible={setShowAddServerModal}
+      />
+
+      <EditServerModal
+        currentServer={currentServer}
+        isVisible={showEditServerModal}
+        setIsVisible={setShowEditServerModal}
       />
 
       <AddChannelModal
