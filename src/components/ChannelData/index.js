@@ -50,11 +50,15 @@ function ChannelData({ currentUser, currentServer, currentChannel }) {
   // Saves a new message to your Cloud Firestore database.
   function saveMessage(messageText) {
     // Tests is current user is admin in current server
-    const isAdmin =
-      currentUser.isAdmin &&
-      currentUser.isAdmin.reduce((prev, curr) => {
+    let isAdmin;
+
+    if (currentUser.isAdmin) {
+      isAdmin = currentUser.isAdmin.reduce((prev, curr) => {
         return prev || curr === currentServer.id;
       }, false);
+    } else {
+      isAdmin = false;
+    }
 
     // Add a new message entry to the database.
     return firebase
