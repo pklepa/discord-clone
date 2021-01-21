@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "51386cad62085f643a60a40c65e3d9c9",
+    "revision": "81803ac1de55537ce57263b646c8e8ba",
     "url": "/discord-clone/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/discord-clone/static/js/2.55e47be2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d2b7043b7153b98fcefe",
-    "url": "/discord-clone/static/js/main.8f722935.chunk.js"
+    "revision": "73beb88f42858523e538",
+    "url": "/discord-clone/static/js/main.8bcd4298.chunk.js"
   },
   {
     "revision": "7513c738c2e2ffe4d32a",
